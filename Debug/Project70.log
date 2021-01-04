@@ -1,0 +1,13 @@
+﻿  Source.cpp
+c:\users\2у234\source\repos\project70\project70\source.cpp(100): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\2у234\source\repos\project70\project70\source.cpp(99): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
+  c:\users\2у234\source\repos\project70\project70\source.cpp(249): note: выполняется компиляция ссылки на экземпляр шаблон функции "void MyVector<int>::print(void)"
+  c:\users\2у234\source\repos\project70\project70\source.cpp(225): note: выполняется компиляция ссылки на экземпляр шаблон класс "MyVector<int>"
+c:\users\2у234\source\repos\project70\project70\source.cpp(66): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\2у234\source\repos\project70\project70\source.cpp(64): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
+  c:\users\2у234\source\repos\project70\project70\source.cpp(225): note: выполняется компиляция ссылки на экземпляр шаблон функции "MyVector<int>::~MyVector(void)"
+c:\users\2у234\source\repos\project70\project70\source.cpp(14): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\2у234\source\repos\project70\project70\source.cpp(9): note: при компиляции функции-члена "<Нет данных>" класса класс <Нет данных>
+  c:\users\2у234\source\repos\project70\project70\source.cpp(182): note: выполняется компиляция ссылки на экземпляр шаблон функции "void MyVector<int>::realocation(size_t)"
+c:\users\2у234\source\repos\project70\project70\source.cpp(17): warning C4018: <: несоответствие типов со знаком и без знака
+  Project70.vcxproj -> C:\Users\2у234\source\repos\Project70\Debug\Project70.exe
