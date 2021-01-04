@@ -1,15 +1,15 @@
 #include<iostream>
 #include<initializer_list>
 #include <algorithm>
+
+
 template <typename T>
 class MyVector {
 	T* data{};
 	size_t size{ 0 };
 	size_t capacity{ 0 };	
 	void realocation(size_t cap) {
-		std::cout << " realocation("<<cap<<")\n";
 		capacity = cap;
-
 		T* tmp = static_cast<T*>(malloc(sizeof(T)*cap));
 		for (int i = 0; i < size; i++) {
 			new(&tmp[i])T{ data[i] };
@@ -17,7 +17,7 @@ class MyVector {
 		for (auto i{ 0 }; i < size; ++i) {
 			data[i].~T();
 		}
-		//free(data);
+		free(data);
 		data = tmp;
 
 	}
@@ -74,14 +74,14 @@ public:
 		if (size == capacity) {
 			realocation(capacity * 2);
 		}
-		new(&data[size++])T{ d };//placement new
+		new(&data[size++])T{ d };
 	}
 
 	void push_back(T&& d) {
 		if (size == capacity) {
 			realocation(capacity * 2);
 		}
-		new(&data[size++])T{ std::move(d) };//placement new
+		new(&data[size++])T{ std::move(d) };
 	}
 	template<typename ...Args>
 	void emplace_back(Args&&... args) {
@@ -169,13 +169,11 @@ public:
 		std::swap(size, y.size);
 
 	}
-	void metod() {
-		std::cout << capacity << std::endl;
+	size_t Capacity() {
+		return capacity;
 	}
-	void capacty() {
-		capacity = 100;
-	}
-	void shrink_to_lift() {
+
+	void shrink_to_fit() {
 		if (capacity > size) {
 			size_t t;
 			t = capacity - size;
@@ -183,78 +181,3 @@ public:
 		}
 	}
 };
-class A
-{
-	int x{};
-public:
-	A() {
-		std::cout << "A()\n";
-	}
-	A(int xx) :x{ xx } {
-		std::cout << "A(int " << xx << ")\n";
-	}
-	A(double xx) :x{ static_cast<int>(xx) } {
-		std::cout << "A(double " << xx << ")\n";
-	}
-	A(const A& rhs) :x{ rhs.x } {
-		std::cout << "A(const A& rhs)\n";
-	}
-	A& operator=(const A& rhs) {
-		x = rhs.x;
-		std::cout << "A& operator=(const A& rhs)\n";
-		return *this;
-	}
-
-	A(A&& rhs) {
-		std::cout << "A(A&& rhs)\n";
-	}
-
-	~A() {
-		std::cout << "~A\n";
-	}
-
-};
-
-
-
-int main() {
-	//MyVector<A> Vect{ A{23}, A{233} };
-	//////Vect.push_back(25.5);
-	////A a{ 55 };
-	////Vect.push_back(std::move(a));
-	MyVector<int> r{ 9,3,7,5 }; 
-	MyVector<int> t{ 7 };
-	//r.print();
-	///*t.print();*/
-	//r.insert(1, 0);
-	//r.insert(1, 2);
-	//r.insert(1, 4);
-	//r.insert(1, 8);
-	//std::cout << "-------------\n";
-	//r.insert(1, 6);
-	//std::sort(r.begin(), r.end(), [](int a, int b) {return a < b; });
-	//r.print();
-	/*r.swap(t);
-	std::cout << "Swap\n";
-	r.print();
-	t.print();*/
-	///*for (auto i = 0; i < r.Size();i++) {
-	//	std::cout << r[i] << " ";
-	//}*/
-	r.insert(1, 4);
-	r.push_back(5);
-	r.push_back(9);
-	r.emplace_back(9);
-	r.push_back(6);
-	r.print();
-	/*r.print();*/
-	/*r.swap(t, r);
-	r.print();
-	t.print();*/
-	//r.capacty();
-	r.metod();
-	r.shrink_to_lift();
-	r.metod();
-	r.push_back(6);
-	r.metod();
-}
